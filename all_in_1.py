@@ -75,3 +75,27 @@ nlp = spacy.load("en_core_web_sm")
 def lemmatize_words(text):
     doc = nlp(text)
     return " ".join([token.lemma_ if token.lemma_ != '-PRON-' else token.text for token in doc])
+
+
+
+
+
+
+
+
+############ Main Func ###########
+
+def preprocess_inputs(df):
+    df = df.copy()
+    df['message'] = df['message'].str.lower()
+    df['message'] = df['message'].apply(remove_html_tags)
+
+    df['message'] = df['message'].apply(remove_url)
+    df['message'] = df['message'].apply(remove_punc)
+    df['message'] = df['message'].apply(remove_stopwords)
+    df['message'] = df['message'].apply(demojize)
+    df['message'] = df['message'].apply(word_tokenize_spacy)
+    df['message'] = df['message'].apply(lemmatize_words)
+#     df['message'] = df['message'].apply(remove_emoji)
+    
+    return df
