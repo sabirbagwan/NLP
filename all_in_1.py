@@ -16,9 +16,19 @@ def remove_url(text):
 
 
 #### Remove Punctuation ########
+# import string
+# exclude = string.punctuation
+# def remove_punc(text):
+#     return text.translate(str.maketrans('', '', exclude))
+
+
 import string
+
 exclude = string.punctuation
+
 def remove_punc(text):
+    if not isinstance(text, str):
+        text = str(text)
     return text.translate(str.maketrans('', '', exclude))
 
 
@@ -75,7 +85,6 @@ nlp = spacy.load("en_core_web_sm")
 def lemmatize_words(text):
     doc = nlp(text)
     return " ".join([token.lemma_ if token.lemma_ != '-PRON-' else token.text for token in doc])
-
 
 
 
