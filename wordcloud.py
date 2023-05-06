@@ -1,3 +1,5 @@
+from wordcloud import WordCloud
+
 text = ' '.join(w for w in X['Preamble'])
 
 wordcloud = WordCloud(width = 1200, height = 1200, background_color = 'black', min_font_size = 10).generate(text)
