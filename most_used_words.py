@@ -1,3 +1,5 @@
+import collections
+
 words = []
 for text in X['message']:
     words.extend(text.split())
