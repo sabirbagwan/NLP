@@ -13,7 +13,7 @@ top_words
 plt.figure(figsize = (15, 6))
 
 # Create the Barplot
-plt.bar(range(len(top_words)), list(top_words.values()), align = 'center')
+plt.bar(range(len(top_words)), list(top_words.values()), align = 'center', color = '#00CC91')
 
 # Creating a y axis with words
 plt.xticks(range(len(top_words)), list(top_words.keys()))
